@@ -1,4 +1,4 @@
 # johnson_algorithms
-ДЛЯ ЗАПУСКА 
-pip install -r Requirements.txt
+ДЛЯ ЗАПУСКА <br />
+pip install -r Requirements.txt <br />
 python main.py
