@@ -22,9 +22,7 @@ def set_current_method(id, value):
     global SELECTED_METHOD 
     SELECTED_METHOD = getattr(METH_CONSTR(), value)()
 
-def count():
-    SELECTED_METHOD.create_count_window(CSV_FILENAME)
-
+def count(): SELECTED_METHOD.create_count_window(CSV_FILENAME)
 
 dpg.create_viewport(title='Application', width=600, height=300)
 
