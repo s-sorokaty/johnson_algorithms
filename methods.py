@@ -6,7 +6,7 @@ class METHOD_ABSTRACT():
     def read_data(self, filename) -> pd.DataFrame: 
         data = pd.read_csv(filename)
         return data
-    
+# ПЕРВОЕ ОБОБЩЕНИЕ ДЖОНСОНА - СНАЧАЛА ИДУТ ДЕТАЛИ С МИНИМАЛЬНЫЙМ ВРЕМЕНЕМ ОБРАБОТКИ НА ПЕРВОМ СТАНКЕ
 class FirstJohnsonGeneralizations(METHOD_ABSTRACT):
     def create_count_window(self, filename): 
         data = super().read_data(filename)
@@ -17,6 +17,7 @@ class FirstJohnsonGeneralizations(METHOD_ABSTRACT):
             dpg.add_text("\nПОРЯДОК ЗАПУСКА ДЕТАЛЕЙ")
             dpg.add_text(first_row.to_string())
 
+# ВТОРОЕ ОБОБЩЕНИЕ ДЖОНСОНА - СНАЧАЛА ИДУТ ДЕТАЛИ С МАКСИМАЛЬНЫМ ВРЕМЕНЕМ ОБРАБОТКИ НА ПОСЛЕДНЕМ СТАНКЕ
 
 class SecondJohnsonGeneralizations(METHOD_ABSTRACT):
     def create_count_window(self, filename): 
