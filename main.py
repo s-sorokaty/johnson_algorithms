@@ -24,7 +24,7 @@ def set_current_method(id, value):
 
 def count(): SELECTED_METHOD.create_count_window(CSV_FILENAME)
 
-dpg.create_viewport(title='Application', width=600, height=300)
+dpg.create_viewport(title='Application', width=1000, height=1000)
 
 with dpg.window(label="READER", width=300, height=200):
     dpg.add_input_text(label="CSV файл", default_value=CSV_FILENAME, callback=set_csv_filename)
