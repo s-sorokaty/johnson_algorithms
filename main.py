@@ -28,7 +28,7 @@ dpg.create_viewport(title='Application', width=1000, height=1000)
 
 with dpg.window(label="READER", width=300, height=200):
     dpg.add_input_text(label="CSV файл", default_value=CSV_FILENAME, callback=set_csv_filename)
-    dpg.add_combo(label="Метод", items =METHODS_LIST, callback=set_current_method)
+    dpg.add_combo(label="Метод", items = METHODS_LIST, callback=set_current_method)
     dpg.add_button(label="Расчитать", callback=count)
 
 
