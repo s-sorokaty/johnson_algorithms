@@ -10,21 +10,20 @@ class METHOD_ABSTRACT():
         return data
     
 
-
-
 # ПЕРВОЕ ОБОБЩЕНИЕ ДЖОНСОНА - СНАЧАЛА ИДУТ ДЕТАЛИ С МИНИМАЛЬНЫЙМ ВРЕМЕНЕМ ОБРАБОТКИ НА ПЕРВОМ СТАНКЕ
 class FirstJohnsonGeneralizations(METHOD_ABSTRACT):
     def create_count_window(self, filename): 
         data = super().read_data(filename)
         first_row = data.loc[data.index[0]][1::].sort_values()
-        with dpg.window(label=f"Первое обощение Джонсона {filename}", width= 600, height=800):
+        with dpg.window(label=f"Первое обощение Джонсона {filename}", width= 600, height=900):
             dpg.add_text("ВХОДНОЙ МАССИВ ДЕТАЛЕЙ")
             dpg.add_text(data.to_string())
             dpg.add_text("\nПОРЯДОК ЗАПУСКА ДЕТАЛЕЙ")
             dpg.add_text(first_row.to_string())
+            dpg.add_text("\n")
             dpg.add_text("\nДИАГРАММА ГАНТА")
-            dpg.add_combo(label="Обработанные детали", items = first_row.index.to_list())
             plot(data, first_row)
+            data.iloc[:, [0, -1,-2]].to_csv('result.csv', index=False)
             width, height, channels, first_image = dpg.load_image("gantt1.png")
             texture_name = str(uuid.uuid4())
             with dpg.texture_registry():
@@ -39,13 +38,14 @@ class SecondJohnsonGeneralizations(METHOD_ABSTRACT):
     def create_count_window(self, filename): 
         data = super().read_data(filename)
         last_row = data.loc[data.index[-1]][1::].sort_values(ascending=False)
-        with dpg.window(label=f"Второе обощение Джонсона {filename}", width= 600, height=800):
+        with dpg.window(label=f"Второе обощение Джонсона {filename}", width= 600, height=900):
             dpg.add_text("ВХОДНОЙ МАССИВ ДЕТАЛЕЙ")
             dpg.add_text(data.to_string())
             dpg.add_text("\nПОРЯДОК ЗАПУСКА ДЕТАЛЕЙ")
             dpg.add_text(last_row.to_string())
             dpg.add_combo(label="Обработанные детали", items = last_row.index.to_list())
             plot(data, last_row)
+            data.iloc[:, [0, -1,-2]].to_csv('result.csv', index=False)
             width, height, channels, first_image = dpg.load_image("gantt1.png")
             texture_name = str(uuid.uuid4())
             with dpg.texture_registry():
