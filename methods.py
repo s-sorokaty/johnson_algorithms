@@ -30,7 +30,6 @@ class FirstJohnsonGeneralizations(METHOD_ABSTRACT):
             def prepare_to_save():
                details_name = first_row.index.to_list()[self.completed_details: len(first_row.index.to_list())]
                details_name.insert(0,data.columns.to_list()[0])
-               print(details_name)
                data[details_name].to_csv('result.csv', index=False)
                
             dpg.add_input_int(label="Законченные детали", callback=lambda item, value:set_completed_details(value) )
@@ -64,7 +63,6 @@ class SecondJohnsonGeneralizations(METHOD_ABSTRACT):
             def prepare_to_save():
                details_name = last_row.index.to_list()[self.completed_details: len(last_row.index.to_list())]
                details_name.insert(0,data.columns.to_list()[0])
-               print(details_name)
                data[details_name].to_csv('result.csv', index=False)
                
             dpg.add_input_int(label="Законченные детали", callback=lambda item, value:set_completed_details(value) )
